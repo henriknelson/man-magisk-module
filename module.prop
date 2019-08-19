@@ -1,0 +1,6 @@
+id=man-ndk
+name=man for Android
+version=1.0
+versionCode=1
+author=nelshh
+description=A statically built version of mandoc (+man pages) for android (aarch64)
