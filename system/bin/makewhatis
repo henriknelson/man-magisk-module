@@ -1,1 +1,9 @@
-../bin/mandoc
+#!/system/bin/sh
+# nano: wrapper to set up and run nano from terminal
+# nelshh @ xda-developers
+
+su -c " \
+chcon u:object_r:app_data_file:s0:c512,c768 /data/man; \
+makewhatis.bin /data/man; \
+chcon u:object_r:app_data_file:s0:c512,c768 /data/man; \
+"

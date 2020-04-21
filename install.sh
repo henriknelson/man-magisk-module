@@ -157,11 +157,23 @@ set_permissions() {
   find $MODPATH/system/usr/share/terminfo -type d -exec chmod 755 {} +;
   find $MODPATH/system/usr/share/terminfo -type f -exec chmod 644 {} +;
 
+  chown -R 0:0 $MODPATH/system/etc;
+  find $MODPATH/system/etc -type d -exec chmod 755 {} +;
+  find $MODPATH/system/etc -type f -exec chmod 644 {} +;
+
   ui_print "[4/5] Installing man pages.."
-  chown -R 0:0 $MODPATH/system/usr/share;
-  find $MODPATH/system/usr/share -type d -exec chmod 755 {} +;
-  find $MODPATH/system/usr/share -type f -exec chmod 755 {} +;
-  chcon -hR 'u:object_r:system_file:s0' $MODPATH/system/usr/share;
+  mkdir -p /data/man;
+  cp -r $MODPATH/custom/man/* /data/man/;
+  chmod 664 /data/man;
+  chown 0:0 /data/man;
+  find /data/man -type d -exec chmod 755 {} \+;
+  find /data/man -type f -exec chmod 664 {} \+;
+  chcon -R u:object_r:app_data_file:s0:c512,c768 /data/man;
+
+  #chown -R 0:0 $MODPATH/system/usr/share;
+  #find $MODPATH/system/usr/share -type d -exec chmod 755 {} +;
+  #find $MODPATH/system/usr/share -type f -exec chmod 755 {} +;
+  #chcon -hR 'u:object_r:system_file:s0' $MODPATH/system/usr/share;
 
   #chown -R 0:0 $MODPATH/system/usr/tmp;
   #find $MODPATH/system/usr/tmp -type d -exec chmod 755 {} +;
@@ -169,5 +181,3 @@ set_permissions() {
 
   ui_print "[5/5] Installation finished";
 }
-
-# You can add more functions to assist your custom script code

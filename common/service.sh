@@ -5,9 +5,6 @@
 # This will make sure your module will still work
 # if Magisk change its mount point in the future
 MODDIR=${0%/*};
-# This script will be executed in late_start service mode
 
-mount -o rw,remount /system/usr;
-makewhatis /system/usr/share/man;
-mount -o ro,remount /system/usr;
-
+makewhatis /data/man;
+chcon -R u:object_r:app_data_file:s0:c512,c768 /data/man;
