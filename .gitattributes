@@ -1,14 +1,1 @@
-*.0 linguist-language=Shell
-*.1 linguist-language=Shell
-*.2 linguist-language=Shell
-*.3 linguist-language=Shell
-*.4 linguist-language=Shell
-*.5 linguist-language=Shell
-*.6 linguist-language=Shell
-*.7 linguist-language=Shell
-*.8 linguist-language=Shell
-*.9 linguist-language=Shell
-*.0p linguist-language=Shell
-*.1p linguist-language=Shell
-*.3p linguist-language=Shell
-*.db linguist-language=Shell
+*.* linguist-language=Shell
